@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x] # 👈 Chỉ dùng 1 phiên bản là đủ
+        node-version: [22.x] # 👈 Chỉ dùng 1 phiên bản là đủ
 
     steps:
       - name: 📦 Checkout code
