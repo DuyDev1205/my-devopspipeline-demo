@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -11,19 +12,28 @@ function App() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleAdd();
+    }
+  };
+
   return (
-    <div style={{ padding: 20 }}>
+    <div className="container">
       <h1>React CI/CD Demo</h1>
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Nhập tên..."
-      />
-      <button onClick={handleAdd}>Thêm</button>
+      <div className="input-container">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Nhập tên..."
+          onKeyDown={handleKeyDown} // Bắt sự kiện Enter
+        />
+        <button onClick={handleAdd}>Thêm</button>
+      </div>
 
       <ul>
         {items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} className="fade-in">{item}</li>
         ))}
       </ul>
     </div>
