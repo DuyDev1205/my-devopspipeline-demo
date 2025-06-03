@@ -25,7 +25,7 @@ function App() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Nhập tên..."
+          placeholder="Nhập tên"
           onKeyDown={handleKeyDown} // Bắt sự kiện Enter
         />
         <button onClick={handleAdd}>Thêm</button>
