@@ -14,10 +14,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run start-react\" \"npm run start-api\"",
+    "start-react": "react-scripts start",
+    "start-api": "cd src/backend && python app.py",
+
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
