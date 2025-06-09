@@ -80,21 +80,25 @@ function App() {
 
       <ul>
         {items.map((name, index) => (
-          <li key={index} className="fade-in">
+          <li key={index}>
             {editMode === name ? (
               <>
                 <input
                   value={editInput}
                   onChange={(e) => setEditInput(e.target.value)}
                 />
-                <button onClick={() => handleSave(name)}>💾</button>
-                <button onClick={() => setEditMode(null)}>❌</button>
+                <div className="button-group">
+                  <button onClick={() => handleSave(name)}>💾</button>
+                  <button onClick={() => setEditMode(null)}>❌</button>
+                </div>
               </>
             ) : (
               <>
-                {name}
-                <button onClick={() => handleEdit(name)}>✏️</button>
-                <button onClick={() => handleDelete(name)}>❌</button>
+                <span>{name}</span>
+                <div className="button-group">
+                  <button onClick={() => handleEdit(name)}>✏️</button>
+                  <button onClick={() => handleDelete(name)}>❌</button>
+                </div>
               </>
             )}
           </li>
