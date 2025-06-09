@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState('');
 
+  // Lấy danh sách tên từ API khi load trang
+  useEffect(() => {
+    fetch('http://localhost:5000/api/names')
+      .then((res) => res.json())
+      .then((data) => setItems(data))
+      .catch((err) => console.error('Lỗi khi lấy danh sách tên:', err));
+  }, []);
+
+  // Gửi tên mới lên API khi người dùng thêm
   const handleAdd = () => {
     if (input.trim() !== '') {
-      setItems([...items, input]);
-      setInput('');
+      fetch('http://localhost:5000/api/names', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: input }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setItems(data.names);
+          setInput('');
+        })
+        .catch((err) => console.error('Lỗi khi thêm tên:', err));
     }
   };
 
@@ -26,7 +44,7 @@ function App() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Nhập tên..."
-          onKeyDown={handleKeyDown} // Bắt sự kiện Enter
+          onKeyDown={handleKeyDown}
         />
         <button onClick={handleAdd}>Thêm</button>
       </div>
