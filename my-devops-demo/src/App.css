@@ -60,7 +60,6 @@ li {
 }
 .button-group {
   display: flex;
-  gap: 6px;
 }
 .fade-in {
   opacity: 0;
