@@ -1,7 +1,15 @@
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-names = []
+import json, os
+
+FILENAME = "data.json"
+
+if os.path.exists(FILENAME):
+    with open(FILENAME, "r") as f:
+        names = json.load(f)
+else:
+    names = []
 
 @app.route("/api/names", methods=["GET", "POST"])
 def handle_names():
@@ -10,9 +18,12 @@ def handle_names():
         name = data.get("name")
         if name:
             names.append(name)
-            return {"message": "Tên đã được thêm", "names": names}
-        return {"error": "Thiếu tên"}, 400
-    return names
+            with open(FILENAME, "w") as f:
+                json.dump(names, f)
+            return jsonify({"message": "Tên đã được thêm", "names": names})
+        return jsonify({"error": "Thiếu tên"}), 400
+    return jsonify(names)
+
 
 @app.route("/api/sum")
 def handle_sum():
