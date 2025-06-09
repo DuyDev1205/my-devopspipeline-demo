@@ -7,7 +7,7 @@ function App() {
 
   // Lấy danh sách tên từ API khi load trang
   useEffect(() => {
-    fetch('http://localhost:5000/api/names')
+    fetch('https://my-devopspipeline-demo.onrender.com/api/names')
       .then((res) => res.json())
       .then((data) => setItems(data))
       .catch((err) => console.error('Lỗi khi lấy danh sách tên:', err));
@@ -16,7 +16,7 @@ function App() {
   // Gửi tên mới lên API khi người dùng thêm
   const handleAdd = () => {
     if (input.trim() !== '') {
-      fetch('http://localhost:5000/api/names', {
+      fetch('https://my-devopspipeline-demo.onrender.com/api/names', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: input }),
