@@ -67,3 +67,20 @@ li {
     transform: translateY(0);
   }
 }
+li button {
+  margin-left: 5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background: #ddd;
+}
+
+li button:hover {
+  background: #bbb;
+}
+
+li input {
+  padding: 4px;
+  margin-right: 5px;
+}
