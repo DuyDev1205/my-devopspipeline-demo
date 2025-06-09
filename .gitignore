@@ -3,3 +3,4 @@ demoSPM
 demoSPM.pub
 .idea
 /my-devops-demo/build
+/my-devops-demo/src/backend/data.json
