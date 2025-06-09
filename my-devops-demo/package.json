@@ -16,7 +16,7 @@
   "scripts": {
     "start": "concurrently \"npm run start-react\" \"npm run start-api\"",
     "start-react": "react-scripts start",
-    "start-api": "cd src/backend && python app.py",
+    "start-api": "start cmd /k \"cd src\\backend && python app.py\"",
 
     "build": "react-scripts build",
     "test": "react-scripts test",
