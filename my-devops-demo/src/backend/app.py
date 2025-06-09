@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # 👈 thêm dòng này
 
 app = Flask(__name__)
+CORS(app)
 import json, os
 
 FILENAME = "data.json"
