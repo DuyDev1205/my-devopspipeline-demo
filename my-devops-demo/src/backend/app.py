@@ -49,5 +49,15 @@ def delete_name(name):
         return jsonify({"message": f"Đã xóa '{name}'", "names": names})
     return jsonify({"error": f"Tên '{name}' không tồn tại"}), 404
 
+@app.route("/api/sum")
+def handle_sum():
+    a = int(request.args.get("a", 0))
+    b = int(request.args.get("b", 0))
+    return {"result": a + b}
+
+@app.route("/api/greet/<user>")
+def greet(user):
+    return {"message": f"Chào mừng, {user}!"}
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

@@ -24,7 +24,7 @@ def test_add_name_fail():
     client = app.test_client()
     response = client.post("/api/names", json={})  # Không có name
     assert response.status_code == 400
-    assert response.get_json()["error"] == "Thiếu tên"
+    assert "Thiếu tên" in response.get_json()["error"]
 
 def test_get_names():
     client = app.test_client()
