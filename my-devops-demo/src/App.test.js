@@ -3,6 +3,6 @@ import App from './App';
 
 test('renders title', () => {
   render(<App />);
-  const titleElement = screen.getByText(/React CI\/CD Demo/i);
+  const titleElement = screen.getByText(/React CI\/CD Demo .../i);
   expect(titleElement).toBeInTheDocument();
 });
